@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule, DatePipe, CurrencyPipe } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-// import { AngularFireModule } from '@angular/fire';
+import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
@@ -13,9 +13,12 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
-// import { firebaseConfig } from 'src/environments/environment';
+import { firebaseConfig } from 'src/environments/environment';
 
 import { NgSelectModule } from '@ng-select/ng-select';
+import {ToastMessageService} from "./services";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {MatSliderModule} from "@angular/material/slider";
 
 @NgModule({
   entryComponents: [
@@ -23,12 +26,14 @@ import { NgSelectModule } from '@ng-select/ng-select';
   declarations: [
   ],
   imports: [
-    // AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireFunctionsModule,
     CommonModule,
+    MatSnackBarModule,
+    MatSliderModule,
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
@@ -53,6 +58,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
     // AuthService,
     DatePipe,
     CurrencyPipe,
+    ToastMessageService,
   ]
 })
 export class SharedModule {

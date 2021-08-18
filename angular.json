@@ -27,8 +27,15 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.css",
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/styles/styles.css",
+              "src/styles/background.css",
+              "src/styles/card.css",
+              "src/styles/icons.css",
+              "src/styles/images.css",
+              "src/styles/modals.css",
               "./node_modules/@ng-select/ng-select/themes/material.theme.css"
             ],
             "scripts": [
@@ -99,6 +106,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.css",
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "~@ng-select/ng-select/themes/material.theme.css"
