@@ -1,5 +1,9 @@
-<div class="text-danger  h-100 d-flex justify-content-center align-items-center">
-  Welcome to the debater!<span class="material-icons">
-thumb_up_off_alt
-</span>
-</div>
+<app-header (toggleSidebarForMe)="sideBarToggle()"></app-header>
+<mat-drawer-container>
+   <mat-drawer mode="side" [opened]="sideBarOpen">
+         <app-side-nav></app-side-nav>
+   </mat-drawer>
+   <mat-drawer-content>
+         <router-outlet></router-outlet>
+   </mat-drawer-content>
+</mat-drawer-container>
