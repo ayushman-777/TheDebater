@@ -1,0 +1,24 @@
+.icon-sm {
+    font-size: 14px;
+}
+
+.icon-regular {
+    font-size: 18px;
+}
+
+.icon-button {
+    font-size: 24px;
+    opacity: 0.5;
+}
+
+.icon-button:hover {
+    opacity: 1.0;
+}
+
+.icon-md {
+    font-size: 36px;
+}
+
+.icon-lg {
+    font-size: 48px;
+}
