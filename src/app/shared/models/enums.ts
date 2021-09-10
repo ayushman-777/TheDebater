@@ -12,3 +12,11 @@ export enum AuthenticationMode {
   GUEST,
   NONE
 }
+
+export enum TopicName {
+  WORLD,
+  LOCALNEWS,
+  TECHNOLOGY,
+  BUSINESS,
+  HEALTH
+}

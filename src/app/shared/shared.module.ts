@@ -27,13 +27,18 @@ import { MatDividerModule } from "@angular/material/divider";
 import { MatListModule } from "@angular/material/list";
 import { SideNavComponent } from "./components/side-nav/side-nav.component";
 import { HeaderComponent } from "./components/header/header.component";
-import {MatButtonModule} from "@angular/material/button";
+import { MatButtonModule } from "@angular/material/button";
+import {CardSubTopicComponent} from "./components/card-sub-topic/card-sub-topic.component";
+import {FileUploadComponent} from "./components/file-upload";
+import {StorageService} from "./services/storage.service";
 
 @NgModule({
   entryComponents: [],
   declarations: [
     SideNavComponent,
-    HeaderComponent
+    HeaderComponent,
+    CardSubTopicComponent,
+    FileUploadComponent
   ],
   imports: [
     AngularFireModule.initializeApp(firebaseConfig),
@@ -62,7 +67,9 @@ import {MatButtonModule} from "@angular/material/button";
   ],
   exports: [
     SideNavComponent,
+    CardSubTopicComponent,
     HeaderComponent,
+    FileUploadComponent,
     CommonModule,
     ReactiveFormsModule,
     MatSidenavModule,
@@ -77,6 +84,7 @@ import {MatButtonModule} from "@angular/material/button";
     DatePipe,
     CurrencyPipe,
     ToastMessageService,
+    StorageService
   ]
 })
 export class SharedModule {

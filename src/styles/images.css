@@ -1,0 +1,11 @@
+.img-placeholder {
+  height: 100px;
+  width: 100px;
+  border: dashed lightblue 2px;
+}
+
+.img-registration {
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+}

@@ -1,4 +1,3 @@
 export class TableName{
-    public static HOME = 'home';
-
+    public static SUBTOPICS = 'subtopics';
 }
