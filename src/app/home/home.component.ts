@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
     { id: 'health', icon: '', title: 'Health' },
     { id: 'addsubtopic', icon: '', title: 'Add Sub-topic' },
   ];
+  photo:boolean=false;
 
   constructor(public router: Router) {
   }

@@ -4,11 +4,43 @@
     <app-side-nav [menuList]="menuList" (onMenuSelected)="menuSelected($event)"></app-side-nav>
   </mat-drawer>
   <mat-drawer-content>
-    <div class="container-fluid page h-100" style="overflow-y: auto">
-      <div class="d-flex page__box p-3"></div>
-      <div class="page__content shadow p-3 position-relative">
-        <div class="page-data position-absolute text-center">
-          <app-card-sub-topic [heading]="value"></app-card-sub-topic>
+    <div class="container-fluid">
+      <div class="page__box"></div>
+      <div class="page__content shadow p-3">
+        <div>
+          <app-card-sub-topic [heading]="value" style="text-align: center"></app-card-sub-topic>
+          <div class="row">
+            <div class="col-md-4 pb-3">
+              <div class="card shadow card-font pb-2" style="border-radius: 30px">
+                <!--                <img class="p-4" src="" alt="Avatar" style="width:100%">-->
+                <span class="p-4 material-icons text-secondary text-center"  style="font-size: 80px" *ngIf="!photo">photo</span>
+                <div class="container text-center">
+                  <h4><b>Technology</b></h4>
+                  <h5>Artificial Intelligence</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 pb-3">
+              <div class="card shadow card-font pb-2"  style="border-radius: 30px">
+                <!--                <img class="p-4" src="" alt="Avatar" style="width:100%">-->
+                <span class="p-4 material-icons text-secondary text-center"  style="font-size: 80px" *ngIf="!photo">photo</span>
+                <div class="container text-center">
+                  <h4><b>Technology</b></h4>
+                  <h5>Artificial Intelligence</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 pb-3">
+              <div class="card shadow card-font pb-2" style="border-radius: 30px">
+                <!--                <img class="p-4" src="" alt="Avatar" style="width:100%">-->
+                <span class="p-4 material-icons text-secondary text-center"  style="font-size: 80px" *ngIf="!photo">photo</span>
+                <div class="container text-center">
+                  <h4><b>Technology</b></h4>
+                  <h6>Artificial Intelligence</h6>
+                </div>
+              </div>
+            </div>
+          </div>
           <router-outlet></router-outlet>
         </div>
       </div>

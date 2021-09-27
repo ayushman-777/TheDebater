@@ -1,31 +1,37 @@
-<form [formGroup]="subtopicForm" (ngSubmit)="submit()">
-  <div class="mb-3">
-  <ng-select appearance="outline" formControlName="topicName">
-      <ng-option *ngFor="let topic of topics; index as i" [value]="i">{{topic}}</ng-option>
-    </ng-select>
-  </div>
-  <div class="mb-3">
-    <label for="subtopicName" class="form-label">Sub-Topic Name</label>
-    <input type="text" class="form-control" id="subtopicName">
-  </div>
-  <div class="mb-3">
-    <div class="d-flex justify-content-center align-items-center">
-      <div class="center-parent flex-column text-matte"
-           [ngClass]="{'img-placeholder':!subtopicImageURL}">
-        <img src="{{subtopicImageURL}}" *ngIf="subtopicImage" class="rounded img-registration">
-        <span class="material-icons text-secondary" *ngIf="!subtopicImageURL">photo</span>
-        <file-upload (onFileUploaded)="fileUploaded($event)" [label]="fileUploadLabel">
-        </file-upload>
+<div class="Container p-5" style="font-size: 20px">
+  <form [formGroup]="subtopicForm" (ngSubmit)="submit()">
+    <div class="mb-3">
+      Topic Name
+      <ng-select appearance="outline" formControlName="topicName">
+        <ng-option *ngFor="let topic of topics; index as i" [value]="i">{{topic}}</ng-option>
+      </ng-select>
+    </div>
+    <div class="mb-3">
+      <label for="subtopicName" class="form-label">Sub-Topic Name</label>
+      <input type="text" class="form-control" id="subtopicName">
+    </div>
+    <div class="mb-3">
+      <div class="d-flex justify-content-center align-items-center">
+        <div class="center-parent text-matte" [ngClass]="{'img-placeholder':!subtopicImageURL}">
+          <img src="{{subtopicImageURL}}" *ngIf="subtopicImage" class="rounded img-registration">
+          <span class="material-icons text-secondary" *ngIf="!subtopicImageURL">photo</span>
+          <div class="mt-4 mb-2">
+
+              <file-upload class="btn" (onFileUploaded)="fileUploaded($event)" [label]="fileUploadLabel">
+              </file-upload>
+
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="mb-3">
-    <label for="description" class="form-label">Description</label>
-    <input type="text" class="form-control" id="description">
-  </div>
-  <div class="mb-3">
-    <input type="date" class="form-check-input" id="dateRelatedToTopic" formControlName="dateRelatedToTopic">
-    <label class="form-check-label" for="dateRelatedToTopic">Date Related To Topic</label>
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <input type="text" class="form-control" id="description">
+    </div>
+    <div class="mb-3">
+      <input type="date" class="form-check-input" id="dateRelatedToTopic" formControlName="dateRelatedToTopic">
+      <label class="form-check-label" for="dateRelatedToTopic">Date Related To Topic</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
