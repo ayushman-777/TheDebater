@@ -6,6 +6,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgSelectModule} from "@ng-select/ng-select";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatCardModule} from "@angular/material/card";
+import {NgbDatepickerModule} from "@ng-bootstrap/ng-bootstrap";
 
 @NgModule({
   declarations: [AddSubTopicComponent],
@@ -16,7 +17,8 @@ import {MatCardModule} from "@angular/material/card";
     ReactiveFormsModule,
     NgSelectModule,
     MatFormFieldModule,
-    MatCardModule
+    MatCardModule,
+    NgbDatepickerModule
   ],
   providers: []
 })

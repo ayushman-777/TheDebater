@@ -1,5 +1,5 @@
 <div class="Container p-5" style="font-size: 20px">
-  <form [formGroup]="subtopicForm" (ngSubmit)="submit()">
+  <form [formGroup]="subtopicForm">
     <div class="mb-3">
       Topic Name
       <ng-select appearance="outline" formControlName="topicName">
@@ -8,12 +8,12 @@
     </div>
     <div class="mb-3">
       <label for="subtopicName" class="form-label">Sub-Topic Name</label>
-      <input type="text" class="form-control" id="subtopicName">
+      <input type="text" class="form-control" formControlName="subtopicName" id="subtopicName">
     </div>
     <div class="mb-3">
       <div class="d-flex justify-content-center align-items-center">
         <div class="center-parent text-matte" [ngClass]="{'img-placeholder':!subtopicImageURL}">
-          <img src="{{subtopicImageURL}}" *ngIf="subtopicImage" class="rounded img-registration">
+          <img src="{{subtopicImageURL}}" *ngIf="subtopicImage" class="rounded img-registration" alt="">
           <span class="material-icons text-secondary" *ngIf="!subtopicImageURL">photo</span>
           <div class="mt-4 mb-2">
 
@@ -26,12 +26,23 @@
     </div>
     <div class="mb-3">
       <label for="description" class="form-label">Description</label>
-      <input type="text" class="form-control" id="description">
+      <input formControlName="description" type="text" class="form-control" id="description">
     </div>
     <div class="mb-3">
-      <input type="date" class="form-check-input" id="dateRelatedToTopic" formControlName="dateRelatedToTopic">
-      <label class="form-check-label" for="dateRelatedToTopic">Date Related To Topic</label>
+      <input class="form-control" placeholder="yyyy-mm-dd" formControlName="dateRelatedToTopic"
+             name="dp" ngbDatepicker [dayTemplate]="customDay" #d="ngbDatepicker">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+      </div>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary" [disabled]="!subtopicForm.valid"
+            (click)="submit()">Submit</button>
   </form>
+
+  <ng-template #customDay let-date let-currentMonth="currentMonth" let-selected="selected" let-disabled="disabled" let-focused="focused">
+  <span class="custom-day" [class.weekend]="isWeekend(date)" [class.focused]="focused"
+        [class.bg-primary]="selected" [class.hidden]="date.month !== currentMonth" [class.text-muted]="disabled">
+    {{ date.day }}
+  </span>
+  </ng-template>
 </div>
