@@ -29,6 +29,10 @@ export class DatabaseInstance {
     return this.firestore.collection(this.tableName).doc(documentReference).valueChanges();
   }
 
+  readAllNC(): Observable<any[]> {
+    return this.firestore.collection(this.tableName).valueChanges();
+  }
+
   readAll(query?: QueryFn): Observable<any[]> {
     return this.firestore.collection(this.tableName, query).valueChanges();
   }

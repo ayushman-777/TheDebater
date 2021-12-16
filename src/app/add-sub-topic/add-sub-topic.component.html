@@ -1,4 +1,4 @@
-<div class="Container p-5" style="font-size: 20px">
+<div class="container p-5" style="font-size: 20px; max-width: 70%">
   <form [formGroup]="subtopicForm">
     <div class="mb-3">
       Topic Name
@@ -11,16 +11,11 @@
       <input type="text" class="form-control" formControlName="subtopicName" id="subtopicName">
     </div>
     <div class="mb-3">
-      <div class="d-flex justify-content-center align-items-center">
-        <div class="center-parent text-matte" [ngClass]="{'img-placeholder':!subtopicImageURL}">
+      <div class="d-flex justify-content-center">
+        <div class="text-matte" [ngClass]="{'img-placeholder':!subtopicImageURL}">
           <img src="{{subtopicImageURL}}" *ngIf="subtopicImage" class="rounded img-registration" alt="">
           <span class="material-icons text-secondary" *ngIf="!subtopicImageURL">photo</span>
-          <div class="mt-4 mb-2">
-
-              <file-upload class="btn" (onFileUploaded)="fileUploaded($event)" [label]="fileUploadLabel">
-              </file-upload>
-
-          </div>
+          <file-upload (onFileUploaded)="fileUploaded($event)"></file-upload>
         </div>
       </div>
     </div>
@@ -29,7 +24,8 @@
       <input formControlName="description" type="text" class="form-control" id="description">
     </div>
     <div class="mb-3">
-      <input class="form-control" placeholder="yyyy-mm-dd" formControlName="dateRelatedToTopic"
+      <label for="dateRelatedToTopic">Date Related to topic</label>
+      <input class="form-control" placeholder="yyyy-mm-dd" formControlName="dateRelatedToTopic" id="dateRelatedToTopic"
              name="dp" ngbDatepicker [dayTemplate]="customDay" #d="ngbDatepicker">
       <div class="input-group-append">
         <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>

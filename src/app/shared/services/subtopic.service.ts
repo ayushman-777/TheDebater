@@ -30,8 +30,8 @@ export class SubtopicService {
     return this.dbInstance.delete(subtopicId);
   }
 
-  getCoupons(merchantId: any): Observable<any> {
-    return this.dbInstance.readAll(ref => ref.where('merchantId', '==', merchantId))
-      .pipe(map((data) => data.map((discount: any) => { discount.validUpto = discount.validUpto.toDate(); return discount; })));
+  getAllSubtopics(): Observable<any> {
+    return this.dbInstance.readAllNC();
   }
+
 }

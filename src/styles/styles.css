@@ -106,6 +106,33 @@ button {
   letter-spacing: 1px;
 }
 
+.s-font{
+  font-size: 13px;
+  color: #2c3344;
+}
+
+.circle{
+  z-index: 1;
+  align-content: center;
+  background-color: #586985;
+  height: 52px;
+  width: 52px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.rectangle{
+  display:block;
+  height:50px;
+  width:150px;
+  background:grey;
+  margin-left: -30px;
+  border-top-left-radius: .5em;
+  border-bottom-left-radius: .5em;
+}
+
+
+
 
 
 
