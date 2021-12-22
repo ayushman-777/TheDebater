@@ -12,4 +12,5 @@ import {HomeRoutingModule} from "./home-routing.module";
     HomeRoutingModule
   ], schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class HomeModule {}
+export class HomeModule {
+}

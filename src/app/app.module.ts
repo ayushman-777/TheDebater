@@ -7,12 +7,10 @@ import { AppComponent } from './app.component';
 import { SharedModule } from "./shared/shared.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { TimelineComponent } from './timeline/timeline.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    TimelineComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,

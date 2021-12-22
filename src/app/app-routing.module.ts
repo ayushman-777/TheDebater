@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {TimelineComponent} from "./timeline/timeline.component";
 // import { UserRole } from './shared/models';
 // import { RouteGuard } from './shared/auth-guard/route-guard';
 
@@ -10,10 +9,6 @@ const routes: Routes = [
     loadChildren: () =>
       import('./home/home.module').then((module) => module.HomeModule),
 
-  },
-  {
-    path: 'timeline',
-    component : TimelineComponent,
   }
 ];
 

@@ -22,4 +22,5 @@ import {NgbDatepickerModule} from "@ng-bootstrap/ng-bootstrap";
   ],
   providers: []
 })
-export class AddSubTopicModule {}
+export class AddSubTopicModule {
+}

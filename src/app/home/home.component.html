@@ -16,14 +16,14 @@
                     <div><b>{{list.subtopicName}}</b></div>
                     <div style="font-size: 14px">{{list.dateAdded}}</div>
                   </div>
-                  <img class="img-spec" src="{{list.imageUrl}}">
+                  <img alt="" class="img-spec" src="{{list.imageUrl}}">
                 </div>
                 <div>
                   <h6><b>{{list.description}}</b></h6>
                   <h5></h5>
                 </div>
                 <div class="d-flex justify-content-between s-font">
-                  <div>View Full Article</div>
+                  <div [routerLink]="[ '/timeline',list.id]" (click)="openTimeline()">View Full Article</div>
                   <span class="material-icons">keyboard_arrow_down</span>
                 </div>
 

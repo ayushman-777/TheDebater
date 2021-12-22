@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { SubtopicService } from '../shared/services/subtopic.service';
+import {Component, OnInit} from '@angular/core';
+import {SubtopicService} from '../shared/services/subtopic.service';
 import {Router} from "@angular/router";
 
 @Component({
@@ -11,13 +11,13 @@ export class HomeComponent implements OnInit {
   sideBarOpen = true;
   value = 'Recently Added';
   menuList = [
-    { id: 'home', icon: 'home', title: 'Recently Added'},
-    { id: 'world', icon: 'dashboard', title: 'World' },
-    { id: 'localnews', icon: '', title: 'Local News' },
-    { id: 'technology', icon: '', title: 'Technology' },
-    { id: 'busineess', icon: '', title: 'Business' },
-    { id: 'health', icon: '', title: 'Health' },
-    { id: 'addsubtopic', icon: '', title: 'Add Sub-topic' },
+    {id: 'home', icon: 'home', title: 'Recently Added'},
+    {id: 'world', icon: 'dashboard', title: 'World'},
+    {id: 'localnews', icon: '', title: 'Local News'},
+    {id: 'technology', icon: '', title: 'Technology'},
+    {id: 'busineess', icon: '', title: 'Business'},
+    {id: 'health', icon: '', title: 'Health'},
+    {id: 'addsubtopic', icon: '', title: 'Add Sub-topic'},
   ];
   topics = [
     'World',
@@ -26,12 +26,10 @@ export class HomeComponent implements OnInit {
     'Business',
     'Health'
   ]
-  photo:boolean=false;
-  AllSubtopics : any;
-  subtopic : any;
+  subtopic: any;
   temp: any;
 
-  constructor(public router: Router, private subtopicService : SubtopicService) {
+  constructor(public router: Router, private subtopicService: SubtopicService) {
   }
 
   ngOnInit(): void {
@@ -44,26 +42,29 @@ export class HomeComponent implements OnInit {
 
   menuSelected(menu: any) {
     this.value = menu.title;
-    if(this.value != 'Add Sub-topic') {
+    if (this.value != 'Add Sub-topic') {
       this.temp.subscribe((list: any) => {
         this.subtopic = list.filter((ele: any) => ele.topicName === this.topics.indexOf(this.value));
-        console.log(this.subtopic);
       });
     }
     this.router.navigateByUrl(menu.id);
   }
 
-  getTopicName(topicName:any)
-  {
-    if(topicName==0)
+  openTimeline() {
+    this.value = '';
+    this.subtopic = null;
+  }
+
+  getTopicName(topicName: any) {
+    if (topicName == 0)
       return 'World';
-    if(topicName==1)
+    if (topicName == 1)
       return 'Local News';
-    if(topicName==2)
-      return 'Techonolgy';
-    if(topicName==3)
+    if (topicName == 2)
+      return 'Technology';
+    if (topicName == 3)
       return 'Business';
     else
-    return 'Health';
+      return 'Health';
   }
 }
