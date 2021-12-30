@@ -69,6 +69,7 @@ import {StorageService} from "./services/storage.service";
     SideNavComponent,
     CardSubTopicComponent,
     HeaderComponent,
+    FormsModule,
     FileUploadComponent,
     CommonModule,
     MatSidenavModule,

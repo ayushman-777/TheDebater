@@ -1,6 +1,7 @@
+import {TopicName} from "./enums";
 
 export class Subtopic {
-  topicName: string;
+  topicName: TopicName;
   subtopicName: string;
   imageUrl: string;
   description: string;
@@ -17,6 +18,7 @@ export class Subtopic {
     this.id = args.id;
     this.dateRelatedToTopic = args.dateRelatedToTopic;
   }
+
   static toJson(subtopic: Subtopic) {
     return {
       topicName: subtopic.topicName,

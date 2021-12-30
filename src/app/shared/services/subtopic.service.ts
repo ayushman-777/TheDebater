@@ -5,13 +5,15 @@ import {Subtopic} from "../models/subtopic";
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
 import {DatabaseInstance} from "../helper/database-instance";
+import {Article} from "../models/article";
 
 @Injectable({
   providedIn: 'root'
 })
 export class SubtopicService {
 
-  public dbInstance: DatabaseInstance;
+  dbInstance: DatabaseInstance;
+  subtopic: any;
 
   constructor(private firestore: AngularFirestore) {
     this.dbInstance = new DatabaseInstance();
@@ -34,4 +36,9 @@ export class SubtopicService {
     return this.dbInstance.readAllNC();
   }
 
+  getSubtopic(subtopicId: any): Observable<any> {
+    return this.dbInstance.readAll(ref => ref
+      .where('id', '==', subtopicId))
+      .pipe(map(data => data.map(art => new Article(art))));
+  }
 }

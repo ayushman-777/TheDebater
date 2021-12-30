@@ -6,7 +6,6 @@ import {Router} from "@angular/router";
   selector: 'app-home',
   templateUrl: './home.component.html'
 })
-
 export class HomeComponent implements OnInit {
   sideBarOpen = true;
   value = 'Recently Added';
@@ -27,13 +26,14 @@ export class HomeComponent implements OnInit {
     'Health'
   ]
   subtopic: any;
-  temp: any;
+  allSubtopics: any;
 
   constructor(public router: Router, private subtopicService: SubtopicService) {
   }
 
   ngOnInit(): void {
-    this.temp = this.subtopicService.getAllSubtopics();
+    this.allSubtopics = this.subtopicService.getAllSubtopics();
+    // this.router.navigate(['/home']);
   }
 
   sideBarToggle() {
@@ -43,7 +43,7 @@ export class HomeComponent implements OnInit {
   menuSelected(menu: any) {
     this.value = menu.title;
     if (this.value != 'Add Sub-topic') {
-      this.temp.subscribe((list: any) => {
+      this.allSubtopics.subscribe((list: any) => {
         this.subtopic = list.filter((ele: any) => ele.topicName === this.topics.indexOf(this.value));
       });
     }

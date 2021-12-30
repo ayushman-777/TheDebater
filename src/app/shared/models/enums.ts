@@ -1,7 +1,8 @@
 export enum UserRole {
   ADMIN,
   USER,
-  EDITOR
+  EDITOR,
+  NOUSER
 }
 
 export enum AuthenticationMode {
