@@ -15,7 +15,7 @@
               <div class="d-flex justify-content-between">
                 <div style="font-size: 20px">
                   <div><b>{{list.subtopicName}}</b></div>
-                  <div style="font-size: 14px">{{list.dateAdded}}</div>
+                  <div style="font-size: 14px">Date added : {{list.dateAdded*1000 | date}}</div>
                 </div>
                 <img alt="" class="img-spec" src="{{list.imageUrl}}">
               </div>
@@ -25,12 +25,11 @@
               </div>
               <div class="d-flex justify-content-between s-font">
                 <div [routerLink]="[ '/timeline',list.id]" (click)="openTimeline()">View Full Article</div>
-                <span class="material-icons">keyboard_arrow_down</span>
+                <span class="material-icons" [routerLink]="[ '/timeline',list.id]" (click)="openTimeline()" >keyboard_arrow_down</span>
               </div>
 
             </div>
           </div>
-
           <router-outlet></router-outlet>
         </div>
       </div>

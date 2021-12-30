@@ -3,7 +3,7 @@ import {TimelineComponent} from "./timeline.component";
 import {SharedModule} from "../shared/shared.module";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {BrowserModule} from "@angular/platform-browser";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -14,7 +14,8 @@ import {FormsModule} from "@angular/forms";
     SharedModule,
     FormsModule,
     BrowserModule,
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule
   ]
 })
 export class TimelineModule {
