@@ -11,36 +11,20 @@
       <input type="text" class="form-control" formControlName="subtopicName" id="subtopicName">
     </div>
     <div class="mb-3">
-      <div class="d-flex justify-content-center">
-        <div class="text-matte" [ngClass]="{'img-placeholder':!subtopicImageURL}">
-          <img src="{{subtopicImageURL}}" *ngIf="subtopicImage" class="rounded img-registration" alt="">
-          <span class="material-icons text-secondary" *ngIf="!subtopicImageURL">photo</span>
-          <file-upload (onFileUploaded)="fileUploaded($event)"></file-upload>
-        </div>
-      </div>
+      <label for="imagePicker" class="form-label">Upload Image</label>
+      <ngp-image-picker [_config]="config1" ($imageChanged)="fileUploaded($event)" id="imagePicker"></ngp-image-picker>
     </div>
     <div class="mb-3">
       <label for="description" class="form-label">Description</label>
-      <input formControlName="description" type="text" class="form-control" id="description">
+      <textarea formControlName="description" type="text" class="form-control" id="description">
+      </textarea>
     </div>
     <div class="mb-3">
       <label for="dateRelatedToTopic">Date Related to topic</label>
-      <input class="form-control" placeholder="yyyy-mm-dd" formControlName="dateRelatedToTopic" id="dateRelatedToTopic"
-             name="dp" ngbDatepicker [dayTemplate]="customDay" #d="ngbDatepicker">
-      <div class="input-group-append">
-        <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
-      </div>
+      <input type="date" class="form-control" formControlName="dateRelatedToTopic" id="dateRelatedToTopic">
     </div>
     <button type="submit" class="btn btn-primary" [disabled]="!subtopicForm.valid"
             (click)="submit()">Submit
     </button>
   </form>
-
-  <ng-template #customDay let-date let-currentMonth="currentMonth" let-selected="selected" let-disabled="disabled"
-               let-focused="focused">
-  <span class="custom-day" [class.weekend]="isWeekend(date)" [class.focused]="focused"
-        [class.bg-primary]="selected" [class.hidden]="date.month !== currentMonth" [class.text-muted]="disabled">
-    {{ date.day }}
-  </span>
-  </ng-template>
 </div>

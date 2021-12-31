@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.allSubtopics = this.subtopicService.getAllSubtopics();
-    // this.router.navigate(['/home']);
+    this.router.navigate(['/home']);
   }
 
   sideBarToggle() {

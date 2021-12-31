@@ -5,8 +5,8 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {NgSelectModule} from "@ng-select/ng-select";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatCardModule} from "@angular/material/card";
-import {NgbDatepickerModule} from "@ng-bootstrap/ng-bootstrap";
 import {AddSubTopicRoutingModule} from "./add-sub-topic-routing.module";
+import {NgpImagePickerModule} from "ngp-image-picker";
 
 @NgModule({
   declarations: [AddSubTopicComponent],
@@ -17,7 +17,7 @@ import {AddSubTopicRoutingModule} from "./add-sub-topic-routing.module";
     NgSelectModule,
     MatFormFieldModule,
     MatCardModule,
-    NgbDatepickerModule
+    NgpImagePickerModule
   ],
   providers: []
 })

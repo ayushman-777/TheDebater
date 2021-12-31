@@ -3,8 +3,8 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {StorageService} from "../shared/services/storage.service";
 import {Subtopic} from "../shared/models/subtopic";
 import {SubtopicService} from "../shared/services/subtopic.service";
-import {NgbCalendar, NgbDate} from '@ng-bootstrap/ng-bootstrap';
 import {ToastMessageService} from "../shared/services";
+import {ImagePickerConf} from "ngp-image-picker";
 
 @Component({
   selector: 'app-add-sub-topic',
@@ -24,7 +24,6 @@ export class AddSubTopicComponent implements OnInit {
 
   constructor(private storageService: StorageService,
               private subtopicService :SubtopicService,
-              private calendar: NgbCalendar,
               private toastService: ToastMessageService) {
   }
 
@@ -32,8 +31,14 @@ export class AddSubTopicComponent implements OnInit {
     this.initializeSubtopicForm();
   }
 
-  isWeekend = (date: NgbDate) =>  this.calendar.getWeekday(date) >= 6;
-
+  config1: ImagePickerConf = {
+    borderRadius: '16px',
+    language: 'en',
+    compressInitial: true,
+    hideDownloadBtn: true,
+    width: '100%',
+    height: 'auto',
+  };
   initializeSubtopicForm() {
     this.subtopicForm = new FormGroup({
       topicName: new FormControl(null, { validators: [Validators.required] }),
@@ -44,8 +49,8 @@ export class AddSubTopicComponent implements OnInit {
   }
 
   fileUploaded(event: any) {
-    this.subtopicImageURL = event.localUrl;
-    this.subtopicImage = event.fileData;
+    this.subtopicImageURL = event;
+    this.subtopicImage = this.storageService.b64toBlob(event);
   }
 
   get fileUploadLabel() {
@@ -53,28 +58,16 @@ export class AddSubTopicComponent implements OnInit {
   }
 
   async submit() {
-    const subtopic = new Subtopic(this.subtopicForm.value);
-    subtopic.id = this.getRandomKey(25);
-    subtopic.dateAdded = new Date();
-
-    // uploading subtopic image
     if (this.subtopicImage){
-      const uploadResult = (await this.storageService.uploadSubtopicImage(this.subtopicImage, subtopic.id));
+      const subtopic = new Subtopic(this.subtopicForm.value);
+      subtopic.id = this.storageService.getRandomKey(25);
+      subtopic.dateAdded = new Date();
+      const uploadResult = (await this.storageService.uploadSubtopicImage('subtopic_image', this.subtopicImage, subtopic.id));
       this.subtopicImageURL = (await uploadResult.ref.getDownloadURL());
       subtopic.imageUrl = this.subtopicImageURL;
       this.subtopicService.addSubtopic(subtopic);
     } else {
       this.toastService.error("Please Upload Image!");
     }
-  }
-
-  getRandomKey(length: number) {
-    const tokens = 'AaBcDeEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789';
-    const tokenLength = tokens.length;
-    let key = '';
-    for (let i = 0; i < length; i++) {
-      key = key + tokens.charAt(Math.ceil(Math.random() * tokenLength));
-    }
-    return key;
   }
 }

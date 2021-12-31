@@ -1,7 +1,6 @@
 import {RouterModule, Routes} from "@angular/router";
 import {NgModule} from "@angular/core";
 import {HomeComponent} from "./home.component";
-import {TimelineComponent} from "../timeline/timeline.component";
 
 const routes: Routes = [
   {
@@ -12,7 +11,10 @@ const routes: Routes = [
       {path: 'technology'},
       {path: 'busineess'},
       {path: 'health'},
-      {path: 'timeline/:id', component: TimelineComponent},
+      {path: 'timeline/:id',
+      loadChildren: () =>
+      import('../timeline/timeline.module').then((module) => module.TimelineModule)
+      },
       {
         path: 'addsubtopic',
         loadChildren: () =>

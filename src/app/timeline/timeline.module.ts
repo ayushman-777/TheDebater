@@ -2,8 +2,9 @@ import {NgModule} from '@angular/core';
 import {TimelineComponent} from "./timeline.component";
 import {SharedModule} from "../shared/shared.module";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
-import {BrowserModule} from "@angular/platform-browser";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {ReactiveFormsModule} from "@angular/forms";
+import {NgpImagePickerModule} from "ngp-image-picker";
+import {TimelineRoutingModule} from "./timeline-routing.module";
 
 
 @NgModule({
@@ -11,12 +12,13 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     TimelineComponent
   ],
   imports: [
+    NgpImagePickerModule,
+    TimelineRoutingModule,
     SharedModule,
-    FormsModule,
-    BrowserModule,
     NgbModule,
     ReactiveFormsModule
-  ]
+  ],
+  providers: []
 })
 export class TimelineModule {
 }
