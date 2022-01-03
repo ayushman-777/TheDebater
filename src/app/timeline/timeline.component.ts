@@ -9,11 +9,36 @@ import {ImagePickerConf} from "ngp-image-picker";
 import {StorageService} from "../shared/services/storage.service";
 import {Timeline} from "../shared/models/timeline";
 import {ToastMessageService} from "../shared/services";
+import {
+  trigger,
+  keyframes,
+  style,
+  animate,
+  transition,
+  query,
+  stagger
+} from '@angular/animations';
 
 @Component({
   selector: 'app-timeline',
-  templateUrl: './timeline.component.html'
+  templateUrl: './timeline.component.html',
+  animations: [
+    trigger('timelineAnimation', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'scale(0.5) translateY(50px)' }),
+        animate(
+          '1000ms',
+          keyframes([
+            style({ opacity: 1, offset: 0.3 }),
+            style({ transform: 'translateY(0)', offset: 0.6 }),
+            style({ transform: 'scale(1)', offset: 1 }),
+          ])
+        ),
+      ]),
+    ])
+  ]
 })
+
 export class TimelineComponent implements OnInit {
 
   subtopic: any;
@@ -22,6 +47,7 @@ export class TimelineComponent implements OnInit {
   articleForm: any;
   timelineImage: Blob | undefined;
   timelineImageURL: any;
+  articleList : any;
   config1: ImagePickerConf = {
     borderRadius: '16px',
     language: 'en',
@@ -61,7 +87,9 @@ export class TimelineComponent implements OnInit {
   loadTimeline() {
     this.articleService.getArticle(this.articleId).subscribe(article => {
       this.article = article[0];
-      console.log(this.article);
+      this.articleList= this.article.timeline.reverse();
+      console.log(this.articleList);
+
     });
   }
 

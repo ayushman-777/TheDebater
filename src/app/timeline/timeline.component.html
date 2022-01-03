@@ -1,16 +1,28 @@
 <div class="container">
-  <div class="timeline">
-    <div class="timeline-container primary">
+  <div class="timeline" >
+    <div class="timeline-container primary" *ngFor="let list of articleList">
       <div class="timeline-icon">
         <i class="far fa-grin-wink"></i>
       </div>
-      <div class="timeline-body">
-        <h4 class="timeline-title"><span class="badge">Primary</span></h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam necessitatibus numquam earum ipsa fugiat veniam suscipit, officiis repudiandae, eum recusandae neque dignissimos. Cum fugit laboriosam culpa, repellendus esse commodi deserunt.</p>
-        <p class="timeline-subtitle">1 Hours Ago</p>
+      <div @timelineAnimation class="timeline-body" >
+        <a href="{{list.websiteUrl}}" target="_blank">
+          <img alt="" class="img-timeline-spec" src="{{list.imageUrl}}">
+        </a>
+          <h4 class="timeline-title"><span class="badge"></span></h4>
+          <div>
+            <p>{{list.summary}}
+              <a href="{{list.websiteUrl}}" target="_blank">
+                read more..
+              </a>
+            </p>
+          </div>
+          <p class="timeline-subtitle">{{list.articleDate}}</p>
       </div>
     </div>
   </div>
+  <div class="timeline-end-icon">
+  </div>
+  <div class="timeline-end"></div>
 </div>
 
 <div class="fixed-bottom horizontal-center">

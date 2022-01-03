@@ -6,7 +6,7 @@
   <mat-drawer-content>
     <div class="container-fluid">
       <div class="page__box"></div>
-      <div class="page__content shadow p-3" style="max-width: 80%; margin-left: 10%">
+      <div class="page__content shadow p-3" style="max-width: 80%; margin-left: 10%; margin-bottom: 5%">
         <div>
           <app-card-sub-topic [heading]="value" style="text-align: center"></app-card-sub-topic>
           <div class="col-12" *ngIf="!(value=='Add Sub-topic')" style="padding: 20px">
@@ -24,8 +24,8 @@
                 <h5></h5>
               </div>
               <div class="d-flex justify-content-between s-font">
-                <div [routerLink]="[ '/timeline',list.id]" (click)="openTimeline()">View Full Article</div>
-                <span class="material-icons" [routerLink]="[ '/timeline',list.id]" (click)="openTimeline()" >keyboard_arrow_down</span>
+                <div [routerLink]="[ '/timeline',list.id]" (click)="openTimeline()" style="cursor: pointer">View Full Article</div>
+                <span class="material-icons" [routerLink]="[ '/timeline',list.id]" (click)="openTimeline()" style="cursor: pointer">keyboard_arrow_down</span>
               </div>
 
             </div>

@@ -26,7 +26,7 @@ mat-drawer {
   width: 260px;
 }
 mat-drawer-container {
-  height: 100%;
+  height: 90%;
 }
 
 mat-drawer {
@@ -119,7 +119,7 @@ body {
 
    .container {
      max-width: 650px;
-     margin: 50px auto;
+     margin: 10px auto;
    }
 
 
@@ -180,7 +180,7 @@ img {
 .timeline-body {
   background: #27293d;
   border-radius: 3px;
-  padding: 20px 20px 15px;
+  padding:15px 15px 15px;
   box-shadow: 1px 3px 9px rgba(0, 0, 0, .1);
 }
 .timeline-body::before
@@ -247,12 +247,33 @@ a:visited {
   transition: .5s all;
 }
 
+.timeline-end
+{
+
+  margin-left: 5%;
+  height: 4px;
+  background: #27293d;
+}
+
+.timeline-end-icon
+{
+  position: absolute;
+  left: -88px;
+  top: 4px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 2rem;
+  background: #4f537b;
+}
+
 .fixed-button
 {
   height: 50px;
   left: 95%;
   position: fixed;
   top: 700px;
-
 }
+
 
