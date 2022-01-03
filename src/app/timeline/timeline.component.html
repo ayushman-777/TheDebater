@@ -1,22 +1,22 @@
 <div class="container">
-  <div class="timeline" >
+  <div class="timeline">
     <div class="timeline-container primary" *ngFor="let list of articleList">
       <div class="timeline-icon">
         <i class="far fa-grin-wink"></i>
       </div>
-      <div @timelineAnimation class="timeline-body" >
+      <div @timelineAnimation class="timeline-body">
         <a href="{{list.websiteUrl}}" target="_blank">
           <img alt="" class="img-timeline-spec" src="{{list.imageUrl}}">
         </a>
-          <h4 class="timeline-title"><span class="badge"></span></h4>
-          <div>
-            <p>{{list.summary}}
-              <a href="{{list.websiteUrl}}" target="_blank">
-                read more..
-              </a>
-            </p>
-          </div>
-          <p class="timeline-subtitle">{{list.articleDate}}</p>
+        <h4 class="timeline-title"><span class="badge"></span></h4>
+        <div>
+          <p>{{list.summary}}
+            <a href="{{list.websiteUrl}}" target="_blank">
+              read more..
+            </a>
+          </p>
+        </div>
+        <p class="timeline-subtitle">{{list.articleDate}}</p>
       </div>
     </div>
   </div>
@@ -26,7 +26,7 @@
 </div>
 
 <div class="fixed-bottom horizontal-center">
-  <i class="material-icons fixed-button" style="font-size: 50px" (click)="openLg(content)" >add_circle</i>
+  <i class="material-icons fixed-button" style="font-size: 50px" (click)="openLg(content)">add_circle</i>
 </div>
 <ng-template #content let-modal>
   <div class="modal-header">
@@ -43,7 +43,8 @@
       </div>
       <div class="mb-3">
         <label for="imagePicker" class="form-label">Image URL</label>
-        <ngp-image-picker [_config]="config1" ($imageChanged)="fileUploaded($event)" id="imagePicker"></ngp-image-picker>
+        <ngp-image-picker [_config]="config1" ($imageChanged)="fileUploaded($event)"
+                          id="imagePicker"></ngp-image-picker>
       </div>
       <div class="mb-3">
         <label for="articleDate" class="form-label">Date : </label>
@@ -57,9 +58,10 @@
     </form>
 
   </div>
-  <div class="modal-footer d-flex justify-content-between" >
-    <button type="submit" class="btn btn-primary" (click)="submit()" [disabled]="!articleForm.valid">Submit</button>
-    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+  <div class="modal-footer d-flex justify-content-between">
+    <button type="submit" class="btn btn-primary" (click)="submit(modal)" [disabled]="!articleForm.valid">Submit
+    </button>
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click');">Close</button>
   </div>
 </ng-template>
 

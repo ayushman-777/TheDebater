@@ -15,7 +15,7 @@
               <div class="d-flex justify-content-between">
                 <div style="font-size: 20px">
                   <div><b>{{list.subtopicName}}</b></div>
-                  <div style="font-size: 14px">Date added : {{list.dateAdded*1000 | date}}</div>
+                  <div style="font-size: 14px">Date added : {{list.dateAdded.toDate() | date:'mediumDate'}}</div>
                 </div>
                 <img alt="" class="img-spec" src="{{list.imageUrl}}">
               </div>

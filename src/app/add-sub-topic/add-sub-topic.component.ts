@@ -16,10 +16,13 @@ export class AddSubTopicComponent implements OnInit {
   subtopicForm: any;
   topics = [
     'World',
-    'Local News',
+    'India',
     'Technology',
     'Business',
-    'Health'
+    'Health',
+    'Science',
+    'Sports',
+    'Entertainment'
   ]
 
   constructor(private storageService: StorageService,

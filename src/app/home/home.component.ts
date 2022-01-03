@@ -10,20 +10,26 @@ export class HomeComponent implements OnInit {
   sideBarOpen = true;
   value = 'Recently Added';
   menuList = [
-    {id: 'home', icon: 'home', title: 'Recently Added'},
-    {id: 'world', icon: 'dashboard', title: 'World'},
-    {id: 'localnews', icon: '', title: 'Local News'},
-    {id: 'technology', icon: '', title: 'Technology'},
-    {id: 'busineess', icon: '', title: 'Business'},
-    {id: 'health', icon: '', title: 'Health'},
-    {id: 'addsubtopic', icon: '', title: 'Add Sub-topic'},
+    {id: 'home', icon: 'travel_explore', title: 'Recently Added'},
+    {id: 'world', icon: 'public', title: 'World'},
+    {id: 'india', icon: 'flag', title: 'India'},
+    {id: 'technology', icon: 'memory', title: 'Technology'},
+    {id: 'business', icon: 'business', title: 'Business'},
+    {id: 'health', icon: 'health_and_safety', title: 'Health'},
+    {id: 'science', icon: 'science', title: 'Science'},
+    {id: 'sports', icon: 'pool', title: 'Sports'},
+    {id: 'entertainment', icon: 'local_movies', title: 'Entertainment'},
+    {id: 'addarticle', icon: 'add_box', title: 'Add An Article'}
   ];
   topics = [
     'World',
-    'Local News',
+    'India',
     'Technology',
     'Business',
-    'Health'
+    'Health',
+    'Science',
+    'Sports',
+    'Entertainment'
   ]
   subtopic: any;
   allSubtopics: any;
@@ -59,7 +65,7 @@ export class HomeComponent implements OnInit {
     if (topicName == 0)
       return 'World';
     if (topicName == 1)
-      return 'Local News';
+      return 'India';
     if (topicName == 2)
       return 'Technology';
     if (topicName == 3)

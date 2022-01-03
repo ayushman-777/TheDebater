@@ -7,16 +7,19 @@ const routes: Routes = [
     path: '', component: HomeComponent, children: [
       {path: 'home'},
       {path: 'world'},
-      {path: 'localnews'},
+      {path: 'india'},
       {path: 'technology'},
-      {path: 'busineess'},
+      {path: 'business'},
       {path: 'health'},
+      {path: 'science'},
+      {path: 'sports'},
+      {path: 'entertainment'},
       {path: 'timeline/:id',
       loadChildren: () =>
       import('../timeline/timeline.module').then((module) => module.TimelineModule)
       },
       {
-        path: 'addsubtopic',
+        path: 'addarticle',
         loadChildren: () =>
           import('../add-sub-topic/add-sub-topic.module').then((module) => module.AddSubTopicModule),
       }

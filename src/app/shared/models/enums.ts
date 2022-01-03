@@ -16,8 +16,11 @@ export enum AuthenticationMode {
 
 export enum TopicName {
   WORLD,
-  LOCALNEWS,
+  INDIA,
   TECHNOLOGY,
   BUSINESS,
-  HEALTH
+  HEALTH,
+  SCIENCE,
+  SPORTS,
+  ENTERTAINMENT
 }
