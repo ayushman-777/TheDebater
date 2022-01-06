@@ -1,7 +1,7 @@
 import {TopicName} from "./enums";
 
 export class Subtopic {
-  topicName: TopicName;
+  topicName: TopicName[];
   subtopicName: string;
   imageUrl: string;
   description: string;

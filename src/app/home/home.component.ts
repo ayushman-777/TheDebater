@@ -58,7 +58,7 @@ export class HomeComponent implements OnInit {
     if (this.value == 'Recently Added') {
       this.subtopic = this.allSubtopics.slice(0, 10);
     } else if (this.value != 'Add Sub-topic') {
-        this.subtopic = this.allSubtopics.filter((ele: any) => ele.topicName === this.topics.indexOf(this.value));
+        this.subtopic = this.allSubtopics.filter((ele: any) => ele.topicName.includes(this.topics.indexOf(this.value)));
     }
     this.router.navigateByUrl(menu.id);
   }
