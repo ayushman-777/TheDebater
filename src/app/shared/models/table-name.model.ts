@@ -1,4 +1,4 @@
-export class TableName{
-    public static HOME = 'home';
-
+export class TableName {
+  public static SUBTOPICS = 'subtopics';
+  public static ARTICLE = 'articles';
 }

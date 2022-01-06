@@ -1,0 +1,6 @@
+<mat-nav-list style="z-index: 986">
+  <a *ngFor="let menu of menuList" mat-list-item (click)="onMenuSelected.emit(menu)"
+     [ngClass]="router.url.includes(menu.id)?'bg-success':''">
+    <mat-icon>{{menu.icon}}</mat-icon> {{menu.title}}
+  </a>
+</mat-nav-list>

@@ -1,7 +1,8 @@
 export enum UserRole {
   ADMIN,
   USER,
-  EDITOR
+  EDITOR,
+  NOUSER
 }
 
 export enum AuthenticationMode {
@@ -11,4 +12,15 @@ export enum AuthenticationMode {
   FACEBOOK,
   GUEST,
   NONE
+}
+
+export enum TopicName {
+  WORLD,
+  INDIA,
+  TECHNOLOGY,
+  BUSINESS,
+  HEALTH,
+  SCIENCE,
+  SPORTS,
+  ENTERTAINMENT
 }

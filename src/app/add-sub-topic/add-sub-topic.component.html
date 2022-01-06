@@ -1,0 +1,30 @@
+<div class="container" style="font-size: 20px; max-width: 70%">
+  <form [formGroup]="subtopicForm">
+    <div class="mb-3">
+      <label for="topicName">Topic Name</label>
+      <ng-select appearance="outline" [multiple]="true" id="topicName" formControlName="topicName">
+        <ng-option *ngFor="let topic of topics; index as i" [value]="i">{{topic}}</ng-option>
+      </ng-select>
+    </div>
+    <div class="mb-3">
+      <label for="subtopicName" class="form-label">Sub-Topic Name</label>
+      <input type="text" class="form-control" formControlName="subtopicName" id="subtopicName">
+    </div>
+    <div class="mb-3">
+      <label for="imagePicker" class="form-label">Upload Image</label>
+      <ngp-image-picker [_config]="config1" ($imageChanged)="fileUploaded($event)" id="imagePicker"></ngp-image-picker>
+    </div>
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <textarea formControlName="description" type="text" class="form-control" id="description">
+      </textarea>
+    </div>
+    <div class="mb-3">
+      <label for="dateRelatedToTopic">Date Related to topic</label>
+      <input type="date" class="form-control" formControlName="dateRelatedToTopic" id="dateRelatedToTopic">
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!subtopicForm.valid"
+            (click)="submit()">Submit
+    </button>
+  </form>
+</div>

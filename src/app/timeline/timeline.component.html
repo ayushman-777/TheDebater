@@ -1,0 +1,68 @@
+<app-card-sub-topic [heading]="subtopicName" style="text-align: center; margin-bottom: 15px;"></app-card-sub-topic>
+<div class="container">
+  <div class="timeline">
+    <div class="timeline-container primary" *ngFor="let list of articleList">
+      <div class="timeline-icon">
+        <i class="far fa-grin-wink"></i>
+      </div>
+      <div @timelineAnimation class="timeline-body shadow">
+        <a class="a-link" href="{{list.websiteUrl}}" target="_blank">
+          <img alt="" class="img-timeline-spec" src="{{list.imageUrl}}">
+        </a>
+        <h4 class="timeline-title"><span class="badge"></span></h4>
+        <div>
+          <p>{{list.summary}}
+            <a href="{{list.websiteUrl}}" target="_blank">
+              read more..
+            </a>
+          </p>
+        </div>
+        <p class="timeline-subtitle">{{list.articleDate}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="timeline-end-icon">
+  </div>
+  <div class="timeline-end"></div>
+</div>
+
+<div class="fixed-bottom horizontal-center">
+  <i class="material-icons fixed-button" style="font-size: 50px" (click)="openLg(content)">add_circle</i>
+</div>
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Add to Timeline</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="articleForm">
+      <div class="mb-3">
+        <label for="webUrl" class="form-label">Website URL</label>
+        <input type="text" class="form-control" formControlName="websiteUrl" id="webUrl">
+      </div>
+      <div class="mb-3">
+        <label for="imagePicker" class="form-label">Image URL</label>
+        <ngp-image-picker [_config]="config1" ($imageChanged)="fileUploaded($event)"
+                          id="imagePicker"></ngp-image-picker>
+      </div>
+      <div class="mb-3">
+        <label for="articleDate" class="form-label">Date : </label>
+        <input type="date" class="form-control" formControlName="articleDate" id="articleDate">
+      </div>
+      <div class="mb-3">
+        <label for="summary" class="form-label">Summary</label>
+        <textarea class="form-control" formControlName="summary" id="summary">
+        </textarea>
+      </div>
+    </form>
+
+  </div>
+  <div class="modal-footer d-flex justify-content-between">
+    <button type="submit" class="btn btn-primary" (click)="submit(modal)" [disabled]="!articleForm.valid">Submit
+    </button>
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click');">Close</button>
+  </div>
+</ng-template>
+

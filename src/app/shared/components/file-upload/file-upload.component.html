@@ -1,0 +1,7 @@
+<div class="d-inline-block position-relative w-100 text-link">
+    <small class="w-100 vertical-center text-info text-link" [ngClass]="leftAlign?'text-left':'text-center'"
+        *ngIf="!enableButton"><span *ngIf="enableIcon"
+            class="material-icons icon-sm mr-2">publish</span>{{label}}</small>
+    <div class="btn btn-primary bg-dark" *ngIf="enableButton">{{label}}</div>
+    <input type="file" (change)="uploadFile($event)" class="position-absolute input-file w-100" accept="{{files}}" [(ngModel)]="fileName" [disabled]="disabled">
+</div>
