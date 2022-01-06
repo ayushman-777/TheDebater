@@ -9,7 +9,7 @@ import {ImagePickerConf} from "ngp-image-picker";
 import {StorageService} from "../shared/services/storage.service";
 import {Timeline} from "../shared/models/timeline";
 import {ToastMessageService} from "../shared/services";
-import {trigger, keyframes, style, animate, transition} from '@angular/animations';
+import {trigger, keyframes, style,query,stagger, animate, transition} from '@angular/animations';
 
 @Component({
   selector: 'app-timeline',
@@ -40,6 +40,8 @@ export class TimelineComponent implements OnInit {
   timelineImage: Blob | undefined;
   timelineImageURL: any;
   articleList: any;
+  subtopics: any;
+  SubtopicName: any;
   config1: ImagePickerConf = {
     borderRadius: '16px',
     language: 'en',
@@ -62,6 +64,7 @@ export class TimelineComponent implements OnInit {
       this.articleId = params['id'];
       this.subtopicService.getSubtopic(this.articleId).subscribe(subtopic => {
         this.subtopic = subtopic;
+        console.log(this.subtopic);
       });
     });
     this.initializeArticleForm();

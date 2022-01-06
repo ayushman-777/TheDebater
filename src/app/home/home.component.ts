@@ -40,6 +40,12 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.allSubtopics = this.subtopicService.getAllSubtopics();
     this.router.navigate(['/home']);
+    if(this.value=='Recently Added')
+    {
+      this.allSubtopics.subscribe((list:any)=>{
+        this.subtopic=list.slice(Math.max(list.length - 10,1));
+      })
+    }
   }
 
   sideBarToggle() {
@@ -48,7 +54,13 @@ export class HomeComponent implements OnInit {
 
   menuSelected(menu: any) {
     this.value = menu.title;
-    if (this.value != 'Add Sub-topic') {
+    if(this.value=='Recently Added')
+    {
+      this.allSubtopics.subscribe((list:any)=>{
+        this.subtopic=list.slice(Math.max(list.length - 10,1));
+      })
+    }
+    else if (this.value != 'Add Sub-topic') {
       this.allSubtopics.subscribe((list: any) => {
         this.subtopic = list.filter((ele: any) => ele.topicName === this.topics.indexOf(this.value));
       });
