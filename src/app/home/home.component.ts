@@ -32,18 +32,19 @@ export class HomeComponent implements OnInit {
     'Entertainment'
   ]
   subtopic: any;
+  allSubtopicsSubscription: any;
   allSubtopics: any;
 
   constructor(public router: Router, private subtopicService: SubtopicService) {
   }
 
   ngOnInit(): void {
-    this.allSubtopics = this.subtopicService.getAllSubtopics();
+    this.allSubtopicsSubscription = this.subtopicService.getAllSubtopics();
     this.router.navigate(['/home']);
-    if(this.value=='Recently Added')
-    {
-      this.allSubtopics.subscribe((list:any)=>{
-        this.subtopic=list.slice(Math.max(list.length - 10,1));
+    if (this.value == 'Recently Added') {
+      this.allSubtopicsSubscription.subscribe((list: any) => {
+        this.allSubtopics = list;
+        this.subtopic = list.slice(0, 10);
       })
     }
   }
@@ -54,16 +55,10 @@ export class HomeComponent implements OnInit {
 
   menuSelected(menu: any) {
     this.value = menu.title;
-    if(this.value=='Recently Added')
-    {
-      this.allSubtopics.subscribe((list:any)=>{
-        this.subtopic=list.slice(Math.max(list.length - 10,1));
-      })
-    }
-    else if (this.value != 'Add Sub-topic') {
-      this.allSubtopics.subscribe((list: any) => {
-        this.subtopic = list.filter((ele: any) => ele.topicName === this.topics.indexOf(this.value));
-      });
+    if (this.value == 'Recently Added') {
+      this.subtopic = this.allSubtopics.slice(0, 10);
+    } else if (this.value != 'Add Sub-topic') {
+        this.subtopic = this.allSubtopics.filter((ele: any) => ele.topicName === this.topics.indexOf(this.value));
     }
     this.router.navigateByUrl(menu.id);
   }

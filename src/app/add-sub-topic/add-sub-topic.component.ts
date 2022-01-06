@@ -5,6 +5,7 @@ import {Subtopic} from "../shared/models/subtopic";
 import {SubtopicService} from "../shared/services/subtopic.service";
 import {ToastMessageService} from "../shared/services";
 import {ImagePickerConf} from "ngp-image-picker";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-add-sub-topic',
@@ -27,7 +28,8 @@ export class AddSubTopicComponent implements OnInit {
 
   constructor(private storageService: StorageService,
               private subtopicService :SubtopicService,
-              private toastService: ToastMessageService) {
+              private toastService: ToastMessageService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -68,7 +70,8 @@ export class AddSubTopicComponent implements OnInit {
       const uploadResult = (await this.storageService.uploadSubtopicImage('subtopic_image', this.subtopicImage, subtopic.id));
       this.subtopicImageURL = (await uploadResult.ref.getDownloadURL());
       subtopic.imageUrl = this.subtopicImageURL;
-      this.subtopicService.addSubtopic(subtopic);
+      await this.subtopicService.addSubtopic(subtopic);
+      await this.router.navigate(['/home']);
     } else {
       this.toastService.error("Please Upload Image!");
     }

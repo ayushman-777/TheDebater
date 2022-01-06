@@ -161,6 +161,8 @@ body {
 }
 
 .timeline-icon {
+  outline: 2px solid #fff;
+  outline-offset: -9px;
   position: absolute;
   left: -88px;
   top: 4px;

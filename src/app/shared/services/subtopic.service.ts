@@ -5,7 +5,6 @@ import {Subtopic} from "../models/subtopic";
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
 import {DatabaseInstance} from "../helper/database-instance";
-import {Article} from "../models/article";
 
 @Injectable({
   providedIn: 'root'
@@ -38,7 +37,7 @@ export class SubtopicService {
 
   getSubtopic(subtopicId: any): Observable<any> {
     return this.dbInstance.readAll(ref => ref
-      .where('id', '==', subtopicId))
-      .pipe(map(data => data.map(art => new Article(art))));
+      .where('id', '==', subtopicId).orderBy('dateAdded', 'desc'))
+      .pipe(map(data => data.map(art => new Subtopic(art))));
   }
 }
