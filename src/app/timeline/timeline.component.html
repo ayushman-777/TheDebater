@@ -27,7 +27,7 @@
 </div>
 
 <div class="fixed-bottom horizontal-center">
-  <i class="material-icons fixed-button" style="font-size: 50px" (click)="openLg(content)">add_circle</i>
+  <i role="button" class="material-icons fixed-button" style="font-size: 50px" (click)="openLg(content)">add_circle</i>
 </div>
 <ng-template #content let-modal>
   <div class="modal-header">
@@ -43,7 +43,7 @@
         <input type="text" class="form-control" formControlName="websiteUrl" id="webUrl">
       </div>
       <div class="mb-3">
-        <label for="imagePicker" class="form-label">Image URL</label>
+        <label for="imagePicker" class="form-label">Image</label>
         <ngp-image-picker [_config]="config1" ($imageChanged)="fileUploaded($event)"
                           id="imagePicker"></ngp-image-picker>
       </div>

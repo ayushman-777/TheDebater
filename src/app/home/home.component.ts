@@ -63,9 +63,10 @@ export class HomeComponent implements OnInit {
     this.router.navigateByUrl(menu.id);
   }
 
-  openTimeline() {
+  openTimeline(id: string) {
     this.value = '';
     this.subtopic = null;
+    this.router.navigate(['/timeline', id]);
   }
 
   getTopicName(topicName: any) {
