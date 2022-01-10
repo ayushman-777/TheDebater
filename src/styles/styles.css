@@ -160,6 +160,11 @@ body {
   margin-bottom: 2.5rem;
 }
 
+.cdk-overlay-container {
+  position: fixed;
+  z-index: 10000;
+}
+
 .timeline-icon {
   outline: 2px solid #fff;
   outline-offset: -9px;
@@ -275,7 +280,7 @@ i {
   height: 50px;
   left: 95%;
   position: fixed;
-  top: 700px;
+  top: 95%;
 }
 
 .postcard {

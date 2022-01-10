@@ -107,6 +107,7 @@ export class TimelineComponent implements OnInit {
         this.article = new Article({id: this.articleId, timeline: Timeline.toJsonArray([timeline])});
         this.articleService.addArticle(this.article);
       }
+      this.articleForm.reset();
       modal.close();
     } else {
       this.toastService.error("Please Upload Image!");
