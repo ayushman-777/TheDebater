@@ -12,10 +12,10 @@
           <div class="col-12" *ngIf="!(value=='Add Sub-topic')" style="margin-top: 20px">
             <article class="postcard dark blue" *ngFor="let list of subtopic">
               <a class="postcard__img_link" >
-                <img class="postcard__img" src="{{list.imageUrl}}" alt="Image Title" >
+                <img (click)="openTimeline(list.id)" class="postcard__img" src="{{list.imageUrl}}" alt="Image Title" >
               </a>
               <div class="postcard__text">
-                <h1 class="postcard__title" [routerLink]="[ '/timeline',list.id]" (click)="openTimeline()">{{list.subtopicName}}</h1>
+                <h1 role="button" class="postcard__title" (click)="openTimeline(list.id)">{{list.subtopicName}}</h1>
                 <div class="postcard__subtitle small">
                   <time datetime="2020-05-25 12:00:00">
                     <i class="fas fa-calendar-alt mr-2"></i>Date added : {{list.dateAdded.toDate() | date:'mediumDate'}}
@@ -24,8 +24,8 @@
                 <div class="postcard__bar"></div>
                 <div class="postcard__preview-txt"> {{list.description}}</div>
                 <div class="d-flex justify-content-between s-font">
-                  <div class="a-link" [routerLink]="[ '/timeline',list.id]" (click)="openTimeline()" style="cursor: pointer">View Full Article</div>
-                  <span class="material-icons a-link" [routerLink]="[ '/timeline',list.id]" (click)="openTimeline()" style="cursor: pointer">keyboard_arrow_down</span>
+                  <div class="a-link" (click)="openTimeline(list.id)" style="cursor: pointer">View Full Article</div>
+                  <span class="material-icons a-link" (click)="openTimeline(list.id)" style="cursor: pointer">keyboard_arrow_down</span>
                 </div>
               </div>
             </article>
