@@ -1,7 +1,7 @@
 <app-header (toggleSidebarForMe)="sideBarToggle()"></app-header>
 <mat-drawer-container>
   <mat-drawer mode="side" [opened]="sideBarOpen">
-    <app-side-nav [menuList]="menuList" (onMenuSelected)="menuSelected($event)"></app-side-nav>
+    <app-side-nav [menuList]="menuList | async" (onMenuSelected)="menuSelected($event)"></app-side-nav>
   </mat-drawer>
   <mat-drawer-content>
     <div class="container-fluid">

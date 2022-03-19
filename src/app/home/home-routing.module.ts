@@ -1,6 +1,7 @@
 import {RouterModule, Routes} from "@angular/router";
 import {NgModule} from "@angular/core";
 import {HomeComponent} from "./home.component";
+import {AdminGuard} from "../shared/auth-guard/admin.guard";
 
 const routes: Routes = [
   {
@@ -19,7 +20,7 @@ const routes: Routes = [
       import('../timeline/timeline.module').then((module) => module.TimelineModule)
       },
       {
-        path: 'addarticle',
+        path: 'addarticle', canActivate: [AdminGuard],
         loadChildren: () =>
           import('../add-sub-topic/add-sub-topic.module').then((module) => module.AddSubTopicModule),
       }

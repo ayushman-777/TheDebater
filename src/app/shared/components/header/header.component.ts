@@ -1,5 +1,5 @@
 import { EventEmitter, Output, Component, OnInit} from '@angular/core';
-import { Router } from '@angular/router';
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-header',
@@ -10,11 +10,15 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
   @Output() toggleSidebarForMe: EventEmitter<any> = new EventEmitter();
 
-  constructor(private router: Router) {}
+  constructor(public authService: AuthService) {}
 
   ngOnInit(): void {}
 
   toggleSidebar() {
     this.toggleSidebarForMe.emit();
+  }
+
+  login() {
+    this.authService.googleLogin();
   }
 }

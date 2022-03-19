@@ -6,6 +6,18 @@
     </button>
     <span class="text-white" style="font-family: 'Dancing Script', cursive;
 font-size: 30px">The Debater</span>
-    <img src="/assets/icons/icon.png" style="height: 50px;width: 50px" alt="">
+    <div class="vertical-center">
+      <img src="/assets/icons/icon.png" style="height: 50px;width: 50px" alt="">
+      <ng-container *ngIf="authService.user$ | async; else loginIcon">
+        <app-profile-card></app-profile-card>
+      </ng-container>
+      <ng-template #loginIcon>
+        <button (click)="login()" mat-icon-button matTooltip="Login">
+          <mat-icon class="text-white" aria-hidden="false" aria-label="Login">
+            account_box
+          </mat-icon>
+        </button>
+      </ng-template>
+    </div>
   </mat-toolbar-row>
 </mat-toolbar>
