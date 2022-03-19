@@ -1,17 +1,7 @@
-export enum UserRole {
-  ADMIN,
-  USER,
-  EDITOR,
-  NOUSER
-}
-
-export enum AuthenticationMode {
-  OTP,
-  EMAIL,
-  GOOGLE,
-  FACEBOOK,
-  GUEST,
-  NONE
+export enum ROLES {
+  SUBSCRIBER = "subscriber",
+  EDITOR = "editor",
+  ADMIN = "admin"
 }
 
 export enum TopicName {

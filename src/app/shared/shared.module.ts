@@ -31,6 +31,9 @@ import {MatButtonModule} from "@angular/material/button";
 import {CardSubTopicComponent} from "./components/card-sub-topic/card-sub-topic.component";
 import {FileUploadComponent} from "./components/file-upload";
 import {StorageService} from "./services/storage.service";
+import {AuthService} from "./services/auth.service";
+import {ProfileCardComponent} from "./components/profile-card/profile-card.component";
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 @NgModule({
   entryComponents: [],
@@ -38,33 +41,35 @@ import {StorageService} from "./services/storage.service";
     SideNavComponent,
     HeaderComponent,
     CardSubTopicComponent,
-    FileUploadComponent
+    FileUploadComponent,
+    ProfileCardComponent
   ],
-  imports: [
-    AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireAuthModule,
-    AngularFirestoreModule,
-    AngularFireStorageModule,
-    AngularFireFunctionsModule,
-    CommonModule,
-    MatSnackBarModule,
-    MatSliderModule,
-    FormsModule,
-    MatSidenavModule,
-    MatToolbarModule,
-    MatMenuModule,
-    MatIconModule,
-    MatDividerModule,
-    MatListModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    ModalModule.forRoot(),
-    BsDatepickerModule.forRoot(),
-    TimepickerModule.forRoot(),
-    TooltipModule.forRoot(),
-    NgSelectModule,
-    MatButtonModule
-  ],
+    imports: [
+        AngularFireModule.initializeApp(firebaseConfig),
+        AngularFireAuthModule,
+        AngularFirestoreModule,
+        AngularFireStorageModule,
+        AngularFireFunctionsModule,
+        CommonModule,
+        MatSnackBarModule,
+        MatSliderModule,
+        FormsModule,
+        MatSidenavModule,
+        MatToolbarModule,
+        MatMenuModule,
+        MatIconModule,
+        MatDividerModule,
+        MatListModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        ModalModule.forRoot(),
+        BsDatepickerModule.forRoot(),
+        TimepickerModule.forRoot(),
+        TooltipModule.forRoot(),
+        NgSelectModule,
+        MatButtonModule,
+        MatTooltipModule
+    ],
   exports: [
     SideNavComponent,
     CardSubTopicComponent,
@@ -80,7 +85,7 @@ import {StorageService} from "./services/storage.service";
     MatListModule
   ],
   providers: [
-    // AuthService,
+    AuthService,
     DatePipe,
     CurrencyPipe,
     ToastMessageService,

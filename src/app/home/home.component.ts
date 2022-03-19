@@ -1,15 +1,20 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {SubtopicService} from '../shared/services/subtopic.service';
 import {Router} from "@angular/router";
+import {AuthService} from "../shared/services/auth.service";
+import {BehaviorSubject, Subscription} from "rxjs";
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html'
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
   sideBarOpen = true;
   value = 'Recently Added';
-  menuList = [
+
+  subscriptions: Subscription[] = [];
+
+  menuList = new BehaviorSubject<Array<any>>([
     {id: 'home', icon: 'travel_explore', title: 'Recently Added'},
     {id: 'world', icon: 'public', title: 'World'},
     {id: 'india', icon: 'flag', title: 'India'},
@@ -18,9 +23,8 @@ export class HomeComponent implements OnInit {
     {id: 'health', icon: 'health_and_safety', title: 'Health'},
     {id: 'science', icon: 'science', title: 'Science'},
     {id: 'sports', icon: 'pool', title: 'Sports'},
-    {id: 'entertainment', icon: 'local_movies', title: 'Entertainment'},
-    {id: 'addarticle', icon: 'add_box', title: 'Add An Article'}
-  ];
+    {id: 'entertainment', icon: 'local_movies', title: 'Entertainment'}
+  ]);
   topics = [
     'World',
     'India',
@@ -32,21 +36,23 @@ export class HomeComponent implements OnInit {
     'Entertainment'
   ]
   subtopic: any;
-  allSubtopicsSubscription: any;
   allSubtopics: any;
 
-  constructor(public router: Router, private subtopicService: SubtopicService) {
-  }
+  constructor(public router: Router, private subtopicService: SubtopicService, public auth: AuthService) { }
 
   ngOnInit(): void {
-    this.allSubtopicsSubscription = this.subtopicService.getAllSubtopics();
     this.router.navigate(['/home']);
     if (this.value == 'Recently Added') {
-      this.allSubtopicsSubscription.subscribe((list: any) => {
+      this.subscriptions.push(this.subtopicService.getAllSubtopics().subscribe((list: any) => {
         this.allSubtopics = list;
         this.subtopic = list.slice(0, 10);
-      })
+      }));
     }
+    this.addAddArticle();
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(x => x.unsubscribe());
   }
 
   sideBarToggle() {
@@ -69,16 +75,14 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/timeline', id]);
   }
 
-  getTopicName(topicName: any) {
-    if (topicName == 0)
-      return 'World';
-    if (topicName == 1)
-      return 'India';
-    if (topicName == 2)
-      return 'Technology';
-    if (topicName == 3)
-      return 'Business';
-    else
-      return 'Health';
+  private addAddArticle() {
+    this.subscriptions.push(this.auth.user$.subscribe(user => {
+      const temp = {id: 'addarticle', icon: 'add_box', title: 'Add An Article'};
+      if (this.auth.canEdit(user))
+        this.subscriptions.push(this.menuList.subscribe(list => {
+          list.push(temp);
+          return list;
+        }));
+    }));
   }
 }

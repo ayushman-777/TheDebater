@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {SubtopicService} from "../shared/services/subtopic.service";
 import {ArticleService} from "../shared/services/article.service";
@@ -10,6 +10,8 @@ import {StorageService} from "../shared/services/storage.service";
 import {Timeline} from "../shared/models/timeline";
 import {ToastMessageService} from "../shared/services";
 import {trigger, keyframes, style, animate, transition} from '@angular/animations';
+import {Subscription} from "rxjs";
+import {AuthService} from "../shared/services/auth.service";
 
 @Component({
   selector: 'app-timeline',
@@ -31,7 +33,7 @@ import {trigger, keyframes, style, animate, transition} from '@angular/animation
   ]
 })
 
-export class TimelineComponent implements OnInit {
+export class TimelineComponent implements OnInit, OnDestroy {
 
   subtopic: any;
   article: any;
@@ -50,25 +52,30 @@ export class TimelineComponent implements OnInit {
     height: 'auto',
   };
   subtopicName = 'WELCOME';
-
+  subscriptions: Subscription[] = [];
   constructor(public activeRoute: ActivatedRoute,
               public subtopicService: SubtopicService,
               private articleService: ArticleService,
               private modalService: NgbModal,
               private storageService: StorageService,
-              private toastService: ToastMessageService) {
+              private toastService: ToastMessageService,
+              public authService: AuthService) {
   }
 
   ngOnInit(): void {
-    this.activeRoute.params.subscribe(params => {
+    this.subscriptions.push(this.activeRoute.params.subscribe(params => {
       this.articleId = params['id'];
-      this.subtopicService.getSubtopic(this.articleId).subscribe(subtopic => {
+      this.subscriptions.push(this.subtopicService.getSubtopic(this.articleId).subscribe(subtopic => {
         this.subtopic = subtopic;
         this.subtopicName = subtopic[0].subtopicName;
-      });
-    });
+      }));
+    }));
     this.initializeArticleForm();
     this.loadTimeline();
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(x => x.unsubscribe());
   }
 
   initializeArticleForm() {
@@ -80,14 +87,14 @@ export class TimelineComponent implements OnInit {
   }
 
   loadTimeline() {
-    this.articleService.getArticle(this.articleId).subscribe(article => {
+    this.subscriptions.push(this.articleService.getArticle(this.articleId).subscribe(article => {
       this.article = article[0];
       if (this.article) {
         this.articleList = this.article.timeline.sort((a: any, b: any) => {
             return <any>new Date(b.articleDate) - <any>new Date(a.articleDate);
           });
       }
-    });
+    }));
   }
 
   async submit(modal: any) {

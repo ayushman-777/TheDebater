@@ -26,43 +26,46 @@
   <div class="timeline-end"></div>
 </div>
 
-<div class="fixed-bottom horizontal-center">
-  <i role="button" class="material-icons fixed-button" style="font-size: 50px" (click)="openLg(content)">add_circle</i>
-</div>
-<ng-template #content let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title">Add to Timeline</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
+<div *ngIf="this.authService.canEdit(authService.user$ | async)">
+  <div class="fixed-bottom horizontal-center">
+    <i role="button" class="material-icons fixed-button" style="font-size: 50px"
+       (click)="openLg(content)">add_circle</i>
   </div>
-  <div class="modal-body">
-    <form [formGroup]="articleForm">
-      <div class="mb-3">
-        <label for="webUrl" class="form-label">Website URL</label>
-        <input type="text" class="form-control" formControlName="websiteUrl" id="webUrl">
-      </div>
-      <div class="mb-3">
-        <label for="imagePicker" class="form-label">Image</label>
-        <ngp-image-picker [_config]="config1" ($imageChanged)="fileUploaded($event)"
-                          id="imagePicker"></ngp-image-picker>
-      </div>
-      <div class="mb-3">
-        <label for="articleDate" class="form-label">Date : </label>
-        <input type="date" class="form-control" formControlName="articleDate" id="articleDate">
-      </div>
-      <div class="mb-3">
-        <label for="summary" class="form-label">Summary</label>
-        <textarea class="form-control" formControlName="summary" id="summary">
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">Add to Timeline</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="articleForm">
+        <div class="mb-3">
+          <label for="webUrl" class="form-label">Website URL</label>
+          <input type="text" class="form-control" formControlName="websiteUrl" id="webUrl">
+        </div>
+        <div class="mb-3">
+          <label for="imagePicker" class="form-label">Image</label>
+          <ngp-image-picker [_config]="config1" ($imageChanged)="fileUploaded($event)"
+                            id="imagePicker"></ngp-image-picker>
+        </div>
+        <div class="mb-3">
+          <label for="articleDate" class="form-label">Date : </label>
+          <input type="date" class="form-control" formControlName="articleDate" id="articleDate">
+        </div>
+        <div class="mb-3">
+          <label for="summary" class="form-label">Summary</label>
+          <textarea class="form-control" formControlName="summary" id="summary">
         </textarea>
-      </div>
-    </form>
+        </div>
+      </form>
 
-  </div>
-  <div class="modal-footer d-flex justify-content-between">
-    <button type="submit" class="btn btn-primary" (click)="submit(modal)" [disabled]="!articleForm.valid">Submit
-    </button>
-    <button type="button" class="btn btn-light" (click)="modal.close('Close click');">Close</button>
-  </div>
-</ng-template>
+    </div>
+    <div class="modal-footer d-flex justify-content-between">
+      <button type="submit" class="btn btn-primary" (click)="submit(modal)" [disabled]="!articleForm.valid">Submit
+      </button>
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click');">Close</button>
+    </div>
+  </ng-template>
+</div>
 
